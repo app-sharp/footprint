@@ -17,6 +17,14 @@ section {
 
 .nav {
   padding: $small;
+
+  img {
+    margin: 0 auto;
+
+    @media screen and (min-width: $tablet) {
+      margin: 0;
+    }
+  }
 }
 
 .clearfix {
@@ -35,7 +43,7 @@ h1 {
 
 h2 {
   font-size: $small;
-  line-height: 44px;
+  line-height: 32px;
   letter-spacing: -0.4px;
   font-weight: $light;
 }

@@ -4,14 +4,26 @@
     padding-bottom: $xxl;
     width: 100%;
     overflow: hidden;
+
+    @media screen and (max-width: $tabletMax) {
+      background-size: 75%;
+    }
   }
 
   .hero {
     lost-align: center;
-    margin-top: -$large;
+
+    @media screen and (min-width: $tablet) {
+      margin-top: -$large;
+    }
 
     h1 {
-      lost-column: 13/24;
+      text-align: center;
+
+      @media screen and (min-width: $tablet) {
+        lost-column: 13/24;
+        text-align: left;
+      }
 
       em {
         font-style: normal;
@@ -21,8 +33,17 @@
     }
 
     .img {
-      lost-column: 11/24;
       padding-top: $small;
+
+      @media screen and (min-width: $tablet) {
+        lost-column: 11/24;
+      }
+
+      img {
+        height: auto;
+        width: 100%;
+        max-width: 508px;
+      }
     }
   }
 
@@ -37,32 +58,57 @@
     lost-align: center;
     padding: $xl 0;
 
+    @media screen and (min-width: $tablet) and (max-width: $desktopMax) {
+      padding: $xl $small;
+    }
+
     h1,
     blockquote {
-      lost-column: 1/2;
+      @media screen and (min-width: $desktop) {
+        lost-column: 1/2;
+      }
     }
 
     h1 {
       color: white;
-      padding: 0;
+      padding: 0 $small;
       margin: 0;
+      text-align: center;
+
+      @media screen and (min-width: $mobile) {
+        padding: 0;
+        text-align: left;
+      }
+
+      @media screen and (max-width: $tabletMax) {
+        margin-left: $tiny;
+      }
+
+      @media screen and (min-width: $tablet) and (max-width: $desktopMax) {
+        lost-column: 7/12;
+      }
 
       span {
-        &:first-child {
-          letter-spacing: -0.3px;
-        }
-        &:last-child {
-          letter-spacing: 4.2px;
+        @media screen and (min-width: $mobile) {
+          &:first-child {
+            letter-spacing: -0.3px;
+          }
+          &:last-child {
+            letter-spacing: 4.2px;
+          }
         }
       }
 
       em {
         font-style: normal;
         color: $yellow;
-        display: block;
-        letter-spacing: 8.5px;
-        font-size: 80px;
-        margin: 21px 0 12px 0;
+
+        @media screen and (min-width: $mobile) {
+          display: block;
+          letter-spacing: 8.5px;
+          font-size: 80px;
+          margin: 21px 0 12px 0;
+        }
       }
     }
 
@@ -72,8 +118,23 @@
       border-top: 1px solid rgba(255,255,255,0.5);
       border-bottom: 1px solid rgba(255,255,255,0.5);
       padding: 0;
-      margin: 0;
       position: relative;
+      max-width: calc(100% - 48px);
+      margin: $medium 0 0 0;
+
+      @media screen and (min-width: $mobile) {
+        max-width: 400px;
+      }
+
+      @media screen and (min-width: $tablet) {
+        margin: 0;
+        max-width: initial;
+      }
+
+      @media screen and (min-width: $tablet) and (max-width: $desktopMax) {
+        lost-column: 5/12;
+      }
+
 
       img {
         background: #0f313f;
@@ -114,15 +175,21 @@
 
   .blue.band {
     background: $blue url(/img/blue-bg-top.png) no-repeat top right;
+    background-size: 75%;
     padding: $xxl 0 0 0;
-    margin-top: -$medium;
+    margin-top: -$large;
+
+    @media screen and (min-width: $tablet) {
+      background-size: initial;
+      margin-top: -$medium;
+    }
   }
 
   .features {
     color: white;
 
     h2 {
-      margin: 0 0 4px 0;
+      margin: 0 0 $tiny 0;
       padding: 0;
 
       span {
@@ -139,7 +206,14 @@
     }
 
     article {
-      lost-align: center;
+      width: 100%;
+      text-align: center;
+
+      @media screen and (min-width: $tablet) {
+        lost-align: center;
+        width: initial;
+        text-align: left;
+      }
 
       &:not(:last-child) {
         margin-bottom: $medium;
@@ -147,38 +221,89 @@
 
       &:nth-child(2) {
         .copy {
-          lost-offset: 1/6;
+          @media screen and (min-width: $desktop) {
+            lost-offset: 1/6;
+          }
         }
 
         img {
-          lost-offset: 1/12;
+          @media screen and (min-width: $tablet) {
+            lost-offset: 1/12;
+          }
+
+          &.mobile {
+            display: initial;
+
+            @media screen and (min-width: $tablet) {
+              display: none;
+            }
+          }
+
+          &.desktop {
+            display: none;
+
+            @media screen and (min-width: $tablet) {
+              display: initial;
+            }
+          }
         }
       }
 
       img {
-        lost-column: 1/3;
+        max-width: calc(100% - 48px);
+
+        @media screen and (min-width: $tablet) {
+          max-width: initial;
+          lost-column: 1/3;
+        }
       }
 
       .copy {
-        lost-column: 1/2;
-        lost-offset: 1/12;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0;
+
+        @media screen and (min-width: $mobile) {
+          max-width: 340px;
+        }
+
+        @media screen and (min-width: $tablet) {
+          margin: initial;
+          padding: initial;
+          max-width: 100%;
+          lost-column: 1/2;
+          lost-offset: 1/12;
+        }
       }
     }
   }
 
   .bottom-cta {
     background: url(/img/blue-cta-bg.png) no-repeat bottom center;
-    background-size: 100%;
-    padding: $xl 0 $xxl 0;
+    background-size: 768px;
+    padding: $xl 0 $xl 0;
     text-align: center;
     color: white;
+
+    @media screen and (min-width: $mobile) {
+      padding-bottom: $xxl;
+    }
+
+    @media screen and (min-width: $tablet) {
+      background-size: 100%;
+    }
 
     h1 {
       margin: 0 0 $small 0;
 
       em {
         color: $yellow;
+        display: block;
         font-style: normal;
+
+        @media screen and (min-width: $mobile) {
+          display: inline;
+        }
       }
     }
   }

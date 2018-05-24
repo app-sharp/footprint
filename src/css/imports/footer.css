@@ -22,7 +22,11 @@
     color: white;
     color: rgba(255,255,255,0.5);
     position: absolute;
-    right: 0;
+    right: $small;
+
+    @media screen and (min-width: $tablet) {
+      right: 0;
+    }
 
     img {
       margin-bottom: -1px;
