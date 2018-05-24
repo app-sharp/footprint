@@ -1,0 +1,31 @@
+.footer {
+  background: $blue;
+  color: white;
+  padding-bottom: 15px;
+
+  .container {
+    position: relative;
+  }
+
+  span, a {
+    font-size: 10px;
+    line-height: $small;
+    font-style: italic;
+    text-decoration: none;
+  }
+
+  .copyright {
+    opacity: 0.5;
+  }
+
+  .to-appsharp {
+    color: white;
+    color: rgba(255,255,255,0.5);
+    position: absolute;
+    right: 0;
+
+    img {
+      margin-bottom: -1px;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="9px" viewBox="0 0 15 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="landing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.5">
+        <g id="v3" transform="translate(-957.000000, -2375.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="cta" transform="translate(410.000000, 2226.000000)">
+                <path d="M547.882223,154.380098 L558.989413,154.388943 L556.8809,156.494103 C556.536833,156.839066 556.536833,157.396314 556.8809,157.741278 C557.224967,158.086241 557.78959,158.086241 558.133657,157.741278 L561.74195,154.123587 C562.086017,153.778624 562.086017,153.221376 561.74195,152.876413 L558.133657,149.258722 C557.78959,148.913759 557.224967,148.913759 556.8809,149.258722 C556.536833,149.603686 556.536833,150.160934 556.8809,150.505897 L558.989413,152.619902 L547.882223,152.611057 C547.397,152.611057 547,153.009091 547,153.495577 C547,153.982064 547.397,154.380098 547.882223,154.380098 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

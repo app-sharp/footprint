@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="486px" height="4px" viewBox="0 0 486 4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Path 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="3.44788656%" y1="50%" x2="100%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#6EB2F3" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#8BC6F7" offset="27.5369251%"></stop>
+            <stop stop-color="#6EB2F3" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="landing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-495.000000, -390.000000)" fill="url(#linearGradient-1)" fill-rule="nonzero">
+            <g id="copy" transform="translate(383.000000, 262.000000)">
+                <g id="Group-3">
+                    <g id="Group-4">
+                        <path d="M615.404294,130.21678 L615.240673,131.615584 C443.803728,127.997803 277.239156,130.157686 112.936292,131.615498 C333.550078,128.269612 501.039412,127.803373 615.404294,130.21678 Z" id="Path-3" transform="translate(364.170293, 130.157686) scale(-1, 1) translate(-364.170293, -130.157686) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

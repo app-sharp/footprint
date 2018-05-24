@@ -1,0 +1,298 @@
+.simform {
+  position: relative;
+  max-width: 588px;
+  margin: 0 auto;
+  width: calc(100% - 48px);
+  text-align: left;
+  font-size: $small;
+
+  .submit {
+    display: none;
+  }
+
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    transition: height 0.4s;
+
+/*    &:before {
+      content: '';
+      background-color: rgba(0, 0, 0, 0.1);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: $large;
+    }*/
+  }
+}
+
+.questions li {
+  z-index: 100;
+  position: relative;
+  visibility: hidden;
+  height: 0;
+  transition: visibility 0s 0.4s, height 0s 0.4s;
+
+  &.current {
+    visibility: visible;
+    height: auto;
+    transition: none;
+  }
+}
+
+.no-js .questions li {
+  visibility: visible;
+  height: auto;
+  transition: none;
+}
+
+.questions li {
+  > span {
+    display: block;
+    overflow: hidden;
+
+    label {
+      display: block;
+      transition: transform 0.4s;
+      transform: translateY(-100%);
+      font-size: 14px;
+      font-family: $roboto;
+      text-align: center;
+    }
+  }
+
+  &.current > span label {
+    transition: none;
+    transform: translateY(0);
+  }
+}
+
+.no-js .questions li > span label {
+  transition: none;
+  transform: translateY(0);
+}
+
+.show-next .questions li.current > span label {
+  animation: moveUpFromDown 0.4s both;
+}
+
+@keyframes moveUpFromDown {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+
+.questions {
+  input {
+    display: block;
+    /*margin: 4px 0 0 0;*/
+    margin: 0;
+    padding: $tiny $tiny 10px 0;
+    width: calc(100% - $medium);
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: $small;
+    font-weight: $light;
+    line-height: $medium;
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    &::placeholder {
+      font-size: $small;
+      color: rgba(255,255,255,0.6);
+      font-weight: $light;
+    }
+  }
+
+  .current input {
+    opacity: 1;
+  }
+}
+
+.no-js .questions input {
+  opacity: 1;
+}
+
+.questions input:focus, .simform button:focus {
+  outline: none;
+}
+
+.next {
+  position: absolute;
+  right: -$micro;
+  bottom: 12px;
+  display: block;
+  padding: 0;
+  width: $medium;
+  height: $medium;
+  border: none;
+  background: none;
+  color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  opacity: 1;
+  z-index: 100;
+  cursor: pointer;
+  transition: transform 0.3s, opacity 0.3s;
+  transform: translateX(-20%);
+  pointer-events: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  &:hover {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(/img/arrow.svg) no-repeat center right;
+  }
+
+/*  &.show {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }*/
+}
+
+.simform {
+  .controls {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .progress {
+    width: 0%;
+    height: 2px;
+    background: $yellow;
+    transition: width 0.4s ease-in-out;
+
+    &::before {
+      position: absolute;
+      top: auto;
+      width: 100%;
+      height: inherit;
+      background: rgba(0, 0, 0, 0.05);
+      content: '';
+    }
+  }
+
+  .number {
+    position: absolute;
+    right: 0;
+    overflow: hidden;
+    margin: 4px 0 0 0;
+    width: 44px;
+    font-size: 14px;
+    font-family: $roboto;
+    color: rgba(0, 0, 0, 0.4);
+
+    &:after {
+      position: absolute;
+      left: 61%;
+      content: 'of';
+      transform: translateX(-50%);
+    }
+    span {
+      float: right;
+      width: 40%;
+      text-align: right;
+    }
+    .number-current {
+      float: left;
+    }
+  }
+  .number-next {
+    position: absolute;
+    left: 0;
+  }
+
+  &.show-next {
+    .number-current {
+      transition: transform 0.4s;
+      transform: translateY(-100%);
+    }
+    .number-next {
+      animation: moveUpFromDown 0.4s both;
+    }
+  }
+
+  .error-message, .final-message {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .error-message {
+    padding: $micro 0 0 0;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.7);
+    font-style: italic;
+    font-size: 14px;
+  }
+}
+
+.final-message {
+  top: 50%;
+  left: 0;
+  padding: $small;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+.error-message.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.final-message.show {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0.5s;
+}
+
+.simform-inner.hide {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0s 0.3s;
+}
+
+.no-js {
+  .simform {
+    font-size: 1.75em;
+  }
+  .questions li {
+    padding: 0 0 2em;
+  }
+  .simform {
+    .submit {
+      display: block;
+      float: right;
+      padding: 10px 20px;
+      border: none;
+      background: rgba(0, 0, 0, 0.3);
+      color: rgba(0, 0, 0, 0.4);
+    }
+    .controls {
+      display: none;
+    }
+  }
+}
+
+input[type=text]::-ms-clear {
+  display: none;
+}

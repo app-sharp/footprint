@@ -1,0 +1,41 @@
+@lost gutter 20px;
+@lost flexbox flex;
+
+.container {
+  lost-center: 940px;
+  padding: 0 $small;
+}
+
+html,
+body,
+section {
+  margin: 0;
+  padding: 0;
+  font-family: $spectral;
+  font-size: $tiny;
+}
+
+.nav {
+  padding: $small;
+}
+
+.clearfix {
+  lost-utility: clearfix;
+}
+
+.hidden {
+  display: none;
+}
+
+h1 {
+  font-size: $medium;
+  line-height: 44px;
+  font-weight: $light;
+}
+
+h2 {
+  font-size: $small;
+  line-height: 44px;
+  letter-spacing: -0.4px;
+  font-weight: $light;
+}
