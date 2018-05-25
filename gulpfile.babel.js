@@ -14,6 +14,15 @@ import BrowserSync from "browser-sync";
 import webpack from "webpack";
 import webpackConfig from "./webpack.conf";
 
+// For img optimization
+import runSequence from "run-sequence";
+import fs from "fs";
+import imagemin from "gulp-imagemin";
+import responsive from "gulp-responsive";
+import imgRetina from "gulp-img-retina";
+const $ = require('gulp-load-plugins')();
+const DEST = "./dist/";
+
 const browserSync = BrowserSync.create();
 
 // Hugo arguments
@@ -25,8 +34,14 @@ gulp.task("hugo", (cb) => buildSite(cb));
 gulp.task("hugo-preview", (cb) => buildSite(cb, hugoArgsPreview));
 
 // Build/production tasks
-gulp.task("build", ["css", "js", "fonts"], (cb) => buildSite(cb, [], "production"));
-gulp.task("build-preview", ["css", "js", "fonts"], (cb) => buildSite(cb, hugoArgsPreview, "production"));
+// gulp.task("build", ["css", "js", "fonts"], (cb) => buildSite(cb, [], "production"));
+// gulp.task("build-preview", ["css", "js", "fonts"], (cb) => buildSite(cb, hugoArgsPreview, "production"));
+gulp.task("build", function(callback) {
+  runSequence(["css", "js", "fonts", "hugo"], "optimize");
+});
+gulp.task("build-preview", function(callback) {
+  runSequence(["css", "js", "fonts", "hugo"], "optimize");
+});
 
 // Compile CSS with PostCSS
 gulp.task("css", () => (
@@ -61,6 +76,68 @@ gulp.task('fonts', () => (
     .pipe(flatten())
     .pipe(gulp.dest("./dist/fonts"))
     .pipe(browserSync.stream())
+));
+
+// Optimize all image assets
+gulp.task("optimize", () => (
+  // resize and compress images
+   gulp.src(["dist/img/**/*.jpg", "dist/img/**/*.png"])
+    .pipe($.responsive({
+      '**/*.jpg': [{
+        width: 600,
+      }, {
+        width: 600 * 2,
+        rename: { suffix: '@2x' }
+      }, {
+        width: 600 * 3,
+        rename: { suffix: '@3x' }
+      }],
+      '**/*.png': [{
+        width: 600,
+      }, {
+        width: 600 * 2,
+        rename: { suffix: '@2x' }
+      }, {
+        width: 600 * 3,
+        rename: { suffix: '@3x' }
+      }],
+    }, {
+      withoutEnlargement: true,
+      skipOnEnlargement: false,
+      errorOnEnlargement: false
+    }))
+    .pipe(imagemin([
+      imagemin.jpegtran({
+        progressive: true
+      }),
+      imagemin.optipng({
+        optimizationLevel: 7
+      })
+    ]))
+    .pipe(gulp.dest(DEST+"img"))
+    .pipe(browserSync.stream()),
+
+  gulp.src(["dist/img/**/*.svg", "dist/img/**/*.gif"])
+    .pipe(imagemin([
+      imagemin.gifsicle({
+        interlaced: true,
+        optimizationLevel: 3
+      }),
+      imagemin.svgo({plugins: [{
+        removeViewBox: true
+      }]})
+    ]))
+    .pipe(gulp.dest(DEST+"img"))
+    .pipe(browserSync.stream()),
+
+  gulp.src(["dist/img/favicon/**/*"])
+    .pipe(gulp.dest(DEST+"img/favicon"))
+    .pipe(browserSync.stream()),
+
+  // add srcset to images
+  gulp.src("dist/**/*.html")
+    .pipe(imgRetina())
+    .pipe(gulp.dest(DEST))
 ));
 
 // Development server with browsersync
