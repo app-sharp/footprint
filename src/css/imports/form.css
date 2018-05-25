@@ -128,7 +128,7 @@
 
 .next {
   position: absolute;
-  right: -$micro;
+  right: 0;
   bottom: 12px;
   display: block;
   padding: 0;
@@ -138,11 +138,10 @@
   background: none;
   color: rgba(0, 0, 0, 0.4);
   text-align: center;
-  opacity: 1;
+  opacity: 0.5;
   z-index: 100;
   cursor: pointer;
-  transition: transform 0.3s, opacity 0.3s;
-  transform: translateX(-20%);
+  transition: opacity 0.3s;
   pointer-events: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
@@ -160,11 +159,10 @@
     background: url(/img/arrow.svg) no-repeat center right;
   }
 
-/*  &.show {
+  &.show {
     opacity: 1;
-    transform: translateX(0);
     pointer-events: auto;
-  }*/
+  }
 }
 
 .simform {
