@@ -19,7 +19,7 @@ import runSequence from "run-sequence";
 import fs from "fs";
 import imagemin from "gulp-imagemin";
 import responsive from "gulp-responsive";
-import imgRetina from "gulp-img-retina";
+import imgSrcSet from "gulp-responsive-imgz";
 const $ = require('gulp-load-plugins')();
 const DEST = "./dist/";
 
@@ -84,21 +84,21 @@ gulp.task("optimize", () => (
    gulp.src(["dist/img/**/*.jpg", "dist/img/**/*.png"])
     .pipe($.responsive({
       '**/*.jpg': [{
-        width: 600,
+        width: 1000,
       }, {
-        width: 600 * 2,
+        width: 1000 * 2,
         rename: { suffix: '@2x' }
       }, {
-        width: 600 * 3,
+        width: 1000 * 3,
         rename: { suffix: '@3x' }
       }],
       '**/*.png': [{
-        width: 600,
+        width: 1000,
       }, {
-        width: 600 * 2,
+        width: 1000 * 2,
         rename: { suffix: '@2x' }
       }, {
-        width: 600 * 3,
+        width: 1000 * 3,
         rename: { suffix: '@3x' }
       }],
     }, {
@@ -136,7 +136,7 @@ gulp.task("optimize", () => (
 
   // add srcset to images
   gulp.src("dist/**/*.html")
-    .pipe(imgRetina())
+    .pipe(imgSrcSet())
     .pipe(gulp.dest(DEST))
 ));
 

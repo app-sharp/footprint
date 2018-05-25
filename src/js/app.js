@@ -1,3 +1,4 @@
+// Form Handling
 var theForm = document.getElementById( 'contact' );
 
 new stepsForm( theForm, {
@@ -19,7 +20,7 @@ new stepsForm( theForm, {
   }
 } );
 
-
+// Form Posting
 function postAjax(url, data, success, error) {
   var params = typeof data == 'string' ? data : Object.keys(data).map(
           function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
