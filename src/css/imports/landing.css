@@ -1,6 +1,7 @@
 .landing {
   .white.band {
     background: url(/img/hero-bg.jpg) no-repeat bottom left;
+    background-size: 603px 377px;
     padding-bottom: $xxl;
     width: 100%;
     overflow: hidden;
@@ -180,7 +181,7 @@
     margin-top: -$large;
 
     @media screen and (min-width: $tablet) {
-      background-size: initial;
+      background-size: 603px 377px;
       margin-top: -$medium;
     }
   }
