@@ -81,24 +81,60 @@ gulp.task('fonts', () => (
 // Optimize all image assets
 gulp.task("optimize", () => (
   // resize and compress images
-   gulp.src(["dist/img/**/*.jpg", "dist/img/**/*.png"])
+   gulp.src(["dist/img/**/*.jpg", "dist/img/**/*.png", "!dist/img/favicon/**/*"])
     .pipe($.responsive({
-      '**/*.jpg': [{
-        width: 1000,
+      'hero-illo.png': [{
+        width: 540,
       }, {
-        width: 1000 * 2,
+        width: 540 * 2,
         rename: { suffix: '@2x' }
       }, {
-        width: 1000 * 3,
+        width: 540 * 3,
         rename: { suffix: '@3x' }
       }],
-      '**/*.png': [{
-        width: 1000,
+      'footprints-bg.jpg': [{
+        width: 1441,
       }, {
-        width: 1000 * 2,
+        width: 1441 * 2,
         rename: { suffix: '@2x' }
       }, {
-        width: 1000 * 3,
+        width: 1441 * 3,
+        rename: { suffix: '@3x' }
+      }],
+      'report-illo.png': [{
+        width: 394,
+      }, {
+        width: 394 * 2,
+        rename: { suffix: '@2x' }
+      }, {
+        width: 394 * 3,
+        rename: { suffix: '@3x' }
+      }],
+      'dash-illo.png': [{
+        width: 350,
+      }, {
+        width: 350 * 2,
+        rename: { suffix: '@2x' }
+      }, {
+        width: 350 * 3,
+        rename: { suffix: '@3x' }
+      }],
+      'code-illo.png': [{
+        width: 350,
+      }, {
+        width: 350 * 2,
+        rename: { suffix: '@2x' }
+      }, {
+        width: 350 * 3,
+        rename: { suffix: '@3x' }
+      }],
+      'quote.png': [{
+        width: 24,
+      }, {
+        width: 24 * 2,
+        rename: { suffix: '@2x' }
+      }, {
+        width: 24 * 3,
         rename: { suffix: '@3x' }
       }],
     }, {

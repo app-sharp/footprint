@@ -1,6 +1,6 @@
 .landing {
   .white.band {
-    background: url(/img/hero-bg.jpg) no-repeat bottom left;
+    background: url(/img/hero-bg.svg) no-repeat bottom left;
     background-size: 603px 377px;
     padding-bottom: $xxl;
     width: 100%;
@@ -175,7 +175,7 @@
   }
 
   .blue.band {
-    background: $blue url(/img/blue-bg-top.png) no-repeat top right;
+    background: $blue url(/img/blue-bg-top.svg) no-repeat top right;
     background-size: 75%;
     padding: $xxl 0 0 0;
     margin-top: -$large;
@@ -280,7 +280,7 @@
   }
 
   .bottom-cta {
-    background: url(/img/blue-cta-bg.png) no-repeat bottom center;
+    background: url(/img/blue-cta-bg.svg) no-repeat bottom center;
     background-size: 768px;
     padding: $xl 0 $xl 0;
     text-align: center;
