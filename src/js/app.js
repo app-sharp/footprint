@@ -9,12 +9,18 @@ new stepsForm( theForm, {
       var messageEl = theForm.querySelector( '.final-message' );
       messageEl.innerHTML = 'Thank you! We\'ll be in touch.';
       classie.addClass( messageEl, 'show' );
+    }, function(failed) {
+      if (failed) {
+        var messageEl = theForm.querySelector( '.final-message' );
+        messageEl.innerHTML = 'There was an error. Try <a href="mailto:info@appsharp.com">emailing us</a> directly.';
+        classie.addClass( messageEl, 'show' );
+      }
     });
   }
 } );
 
 
-function postAjax(url, data, success) {
+function postAjax(url, data, success, error) {
   var params = typeof data == 'string' ? data : Object.keys(data).map(
           function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
       ).join('&');
@@ -22,7 +28,9 @@ function postAjax(url, data, success) {
   var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
   xhr.open('POST', url);
   xhr.onreadystatechange = function() {
-      if (xhr.readyState>3 && xhr.status==200) { success(xhr.responseText); }
+      if (xhr.readyState>3 && xhr.status==200) {
+        success(xhr.responseText);
+      } else { error(true);}
   };
   xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
